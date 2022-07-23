@@ -13,10 +13,10 @@ public class Trabajador {
     private String nombres;
     private String correo;
     private double sueldo;
-    private int mesSueldo;
+    private String mesSueldo;
     
     public Trabajador(String id, String nom, String corre,
-            double su, int mes) {
+            double su, String mes) {
         cedula = id;
         nombres = nom;
         correo = corre;
@@ -40,7 +40,7 @@ public class Trabajador {
        sueldo = n;
    }
    
-   public void establecerMesSueldo(int n) {
+   public void establecerMesSueldo(String n) {
        mesSueldo = n;
    }
    
@@ -60,7 +60,7 @@ public class Trabajador {
        return sueldo;
    }
    
-   public int obtenerMesSueldo() {
+   public String obtenerMesSueldo() {
        return mesSueldo;
    }
 }
