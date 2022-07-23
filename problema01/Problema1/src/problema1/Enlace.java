@@ -20,7 +20,7 @@ public class Enlace {
 
         try {  
             // db parameters  
-            String url = "jdbc:sqlite:bd/base01.bd";  
+            String url = "jdbc:sqlite:bd/baseEj01.bd";  
             // create a connection to the database  
             conn = DriverManager.getConnection(url);  
             // System.out.println(conn.isClosed());
@@ -34,5 +34,25 @@ public class Enlace {
     
     public Connection obtenerConexion(){
         return conn;
+    }
+    
+    public void insertarCiudad(Trabajador tra) {  
+  
+        try{  
+            establecerConexion();
+            Statement statement = obtenerConexion().createStatement();
+            String data = String.format("INSERT INTO Trabajador (cedula, nombres, correo, sueldo, mesSueldo) "
+                    + "values ('%s', '%s', '%s', %.2f)", tra.obtenerCedula(), 
+                    tra.obtenerNombres(),
+                    tra.obtenerCorreo(),
+                    tra.obtenerSueldo(),
+                    tra.obtenerMesSueldo());
+            statement.executeUpdate(data);
+            obtenerConexion().close();
+        } catch (SQLException e) {  
+             System.out.println("Exception: insertarTrabajador");
+             System.out.println(e.getMessage());  
+             
+        }  
     }
 }
